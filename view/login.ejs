@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+</head>
+<body>
+    LOGIN PAGE
+
+    <form action="/user/login" method="POST">
+
+        <label for="email">Enter Your Email</label>
+        <input type="text" placeholder="eg. example@gmail.com" id="email" name="email" required>
+        
+        <label for="password">Enter Password</label>
+        <input type="text" placeholder="your_secret_password" id="password" name="password" required>
+
+        <button type="submit">LOGIN</button>
+
+        <% if (locals.error) { %>
+         <p><%= locals.error %></p>
+        <% } %>
+
+    </form>
+</body>
+</html>
