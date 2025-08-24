@@ -6,7 +6,7 @@ import userModel from "../model/user.js";
 
 const staticRouter = express.Router();
 
-
+//authenticated route
 staticRouter.get("/", handleAuth, async (req, res) => {
     const allUrls = await urlModel.find({ email: req.user.email });
     console.log("All URLs for user:", allUrls);
@@ -22,6 +22,7 @@ staticRouter.get("/login", (req, res) => {
     res.status(200).render("login");
 });
 
+//protected route
 staticRouter.get("/admin", handleAuth, restrictTo(['admin']), async(req,res) => {
     const allUsers = await userModel.find()
     const allUrls = await urlModel.find()

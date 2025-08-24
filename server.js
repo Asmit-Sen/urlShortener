@@ -1,7 +1,7 @@
 import express from 'express'
-import router from './route/url.js'
-import staticRouter from './route/staticRouter.js'
-import userRouter from './route/user.js';
+import router from './router/url.js'
+import staticRouter from './router/staticRouter.js'
+import userRouter from './router/user.js';
 
 import connectMongoDB from './connection.js';
 import cookieParser from 'cookie-parser';
