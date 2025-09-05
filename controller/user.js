@@ -26,13 +26,15 @@ const handleUserLogin = async (req, res) => {
     }
 
     const match = await bcrypt.compare(password, user.password);
+    console.log(match);
+    
     if (!match) {
         return res.status(401).render("login", { error: "Oops ! Wrong Password" });
     }
 
     // create jwt token and set it as cookie
     const token = setJwt(user)
-    res.cookie("token", token)
+    res.cookie("Bearer", token)
     
     // return res.status(200).render("home", { user });
     return res.status(200).redirect("/");
@@ -40,7 +42,7 @@ const handleUserLogin = async (req, res) => {
 
 
 const handleUserLogout = (req, res) => {
-    res.clearCookie("token");
+    res.clearCookie("Bearer");
     return res.status(200).redirect("/login");
 }
 

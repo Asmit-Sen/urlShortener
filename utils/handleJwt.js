@@ -9,5 +9,4 @@ const checkJwt = (token) => {
     return jwt.verify(token, process.env.SECRET_KEY)
 }
 
-
 export {checkJwt, setJwt};
