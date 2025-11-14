@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import useAuthContext from '../hooks/useAuthContext';
 
 import { PillNav } from './index'
-import logo from '/images/logo.png';
 
 const Navbar = () => {
 
@@ -28,8 +27,6 @@ const Navbar = () => {
   return (
     <div className='display-flex justify-center align-middle'>
         <PillNav
-        logo={logo}
-        logoAlt="Company Logo"
         items={[
             { label: 'Home', href: '/' },
             { label : 'Profile', href: '/profile' },
