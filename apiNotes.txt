@@ -1,0 +1,9 @@
+/user/login POST
+/user/signup POST
+/user/logout POST
+
+/url/shorten POST
+/url/:shortId GET
+/url/analytics/:shortId GET
+/url/getAll/:email GET
+

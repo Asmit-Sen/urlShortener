@@ -2,10 +2,11 @@
 import { checkJwt } from '../utils/handleJwt.js';
 
 const handleAuth = async (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.cookies.Bearer;
     if (!req.cookies || !token) {
         //not authenticated user
-        return res.status(401).redirect("/login");
+        console.log("not authenticated");
+        return res.status(403).json({error : "Not Authenticated"});
     }
     try{
         const decoded = checkJwt(token);
@@ -14,7 +15,7 @@ const handleAuth = async (req, res, next) => {
     }
     catch (err){
         console.log(err);
-        return res.status(401).redirect("/login");
+        return res.status(401).json({error : "Invalid Token"});
     }
 }
 
@@ -29,7 +30,7 @@ const restrictTo = (roles=[]) => {
         //if user is authenticated but not authorised if the role
         //is not in the allowed roles
         if (!roles.includes(req.user.role)) {
-            return res.status(403).send("You do not have permission to perform this action");
+            return res.status(403).json({error : "You do not have permission to perform this action"});
         }
         next();
     }
