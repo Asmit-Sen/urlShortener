@@ -97,10 +97,11 @@ const AnimatedList = ({
   }, [selectedIndex, keyboardNav]);
 
   return (
-    <div className={`relative w-[500px] ${className}`}>
+    <div className={`relative min-w-[400px] h-1/2 mt-10 flex justify-center items-center 
+    ${className}`}>
       <div
         ref={listRef}
-        className={`max-h-[400px] overflow-y-auto p-4 ${
+        className={`max-h-[200px] min-w-[66%] overflow-y-auto p-4 ${
           displayScrollbar
             ? '[&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-[#060010] [&::-webkit-scrollbar-thumb]:bg-[#222] [&::-webkit-scrollbar-thumb]:rounded-[4px]'
             : 'scrollbar-hide'
@@ -124,14 +125,14 @@ const AnimatedList = ({
               }
             }}
           >
-            <div className={`p-4 rounded-lg ${selectedIndex === index ? ' bg-black' : ''} ${itemClassName}`}>
+            <div className={`rounded-lg ${selectedIndex === index ? ' bg-black' : ''} ${itemClassName}`}>
               {typeof item === 'object' && item.longUrl && item.shortId ? (
-                <div className="text-white flex justify-center gap-10">
-                  <div className="break-all">
-                    <strong className="text-white">Long URL:</strong> {item.longUrl}
+                <div className="text-white grid grid-cols-2 px-4 gap-7">
+                  <div className="break-all text-center">
+                    <strong className="text-purple-400">Long URL:</strong> {item.longUrl}
                   </div>
-                  <div className="mb-2">
-                    <strong className="text-purple-400">Short ID:</strong> {item.shortId}
+                  <div className="text-center">
+                    <strong className="text-purple-400 text-center">Short ID:</strong> {item.shortId}
                   </div>
                 </div>
               ) : (

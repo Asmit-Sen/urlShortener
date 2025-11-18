@@ -20,18 +20,18 @@ function Profile() {
     },[]);
 
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen overflow-hidden'>
         <div className='text-white mt-20 flex flex-col justify-start items-center 
         font-mono'>
         {data && data.length > 0 ? (
           <div className="w-full max-w-4xl">
-            <h2 className='text-2xl mb-4 text-center'>Your Shortened URLs</h2>
+            <h2 className='text-2xl mb-4 text-center'>Your Links</h2>
             <AnimatedList
               items={data}
               onItemSelect={(item, index) => console.log(item, index)}
               showGradients={false}
               enableArrowNavigation={true}
-              displayScrollbar={true}
+              displayScrollbar={false}
               className="w-full"
             />
           </div>
