@@ -36,11 +36,12 @@ const handleUserLogin = async (req, res) => {
         return res.status(403).json({ error: "Oops ! Wrong Password" });
     }
 
-    // create jwt token and set it as cookie
+    // create jwt token 
     const token = setJwt(user)
-    res.cookie("Bearer", token)
-    console.log("Login Successful, token set in cookie", token);
-    
+    //set the jwt token as a cookie
+    res.cookie("Bearer", token);
+
+    console.log("Login Successful, token set in cookie : ", token);
     return res.status(200).json({msg: "Login Successful", "Bearer": token});
 }
 

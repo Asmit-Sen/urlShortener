@@ -5,5 +5,5 @@
 /url/shorten POST
 /url/:shortId GET
 /url/analytics/:shortId GET
-/url/getAll/:email GET
+/url/getAll/ GET
 

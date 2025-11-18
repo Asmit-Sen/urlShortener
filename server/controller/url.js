@@ -38,13 +38,18 @@ const handleRedirect = async(req, res)=>{
     res.status(302).json({  longUrl : url.longUrl})  //302 for redirection
 }
 
-//GET /url/getAll/:email
+//GET /url/getAll
 const handleGetUrlsByEmail = async (req, res) => {
-    const email = req.params.email;
+    
+    const email = req.user.email;
+    console.log("Fetching URLs for email: ", email);
+    // console.log("control here");
     if (!email) return res.status(400).send("No email found");
 
     const urls = await urlModel.find({ email });
-    if (!urls || urls.length === 0) return res.status(404).send({ msg: "No URLs found for this email" });
+    // allow for empty list
+    // if (!urls || urls.length === 0) 
+    //     return res.status(404).send({ msg: "No URLs found for this email" });
 
     res.status(200).json(urls);
 };

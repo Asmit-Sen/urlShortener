@@ -3,11 +3,17 @@ import { handleShorten, handleRedirect,handleAnalytics, handleGetUrlsByEmail } f
 import { handleAuth } from "../middleware/auth.js";
 
 const router = express.Router();
+
+router.get('/test', (req,res)=>
+    res.json({msg: "url route test api working"})
+);
+
+router.get('/getAll',handleAuth, handleGetUrlsByEmail);
+
 router.post('/shorten', handleAuth, handleShorten);
 
 router.get('/:shortId',handleAuth, handleRedirect);
 
 router.get('/analytics/:shortId',handleAuth, handleAnalytics);
 
-router.get('/getAll/:email', handleAuth, handleGetUrlsByEmail);
 export default router;  

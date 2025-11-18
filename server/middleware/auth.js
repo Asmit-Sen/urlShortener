@@ -3,9 +3,11 @@ import { checkJwt } from '../utils/handleJwt.js';
 
 const handleAuth = async (req, res, next) => {
     const token = req.cookies.Bearer;
+    console.log("Token received on server : ", token);
+    
     if (!req.cookies || !token) {
         //not authenticated user
-        console.log("not authenticated");
+        console.log("Not authenticated (Auth Middleware)");
         return res.status(403).json({error : "Not Authenticated"});
     }
     try{
